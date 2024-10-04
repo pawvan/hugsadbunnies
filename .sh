@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Compile the OCaml script
-ocamlc -o generate_files generate_files.ml
+ocamlc -o rename_files rename_files.ml
 
-# Run the generated executable to create random files
-./generate_files
+# Run the generated executable to rename files
+./rename_files
 
 # Cleanup (optional)
-rm generate_files
+rm rename_files
