@@ -9,17 +9,14 @@ let random_string length =
   in
   aux "" length
 
-let create_file_with_random_name extension =
+let rename_file original extension =
   let random_name = random_string 8 in
-  let filename = random_name ^ extension in
-  let oc = open_out filename in
-  Printf.fprintf oc "/* This is a generated file: %s */\n" filename;
-  close_out oc;
-  Printf.printf "Created file: %s\n" filename
+  let new_filename = random_name ^ extension in
+  Sys.rename original new_filename;
+  Printf.printf "Renamed %s to %s\n" original new_filename
 
 let () =
   Random.self_init ();
-  create_file_with_random_name ".css";
-  create_file_with_random_name ".html";
-  create_file_with_random_name ".js";
-  
+  rename_file "index.html" ".html";  (* Adjust based on your actual filenames *)
+  rename_file "style.css" ".css";    (* Adjust based on your actual filenames *)
+  rename_file "script.jsjsjs" ".js";  (* Adjust based on your actual filenames *)
